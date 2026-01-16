@@ -1,8 +1,6 @@
-# Claude Code Bash Hook
+# Claude Code Safety Hook
 
-Auto-approves safe Bash commands (build, test, read-only ops) so you're not prompted repeatedly, while deferring dangerous commands to Claude Code's permission system.
-
-**Why?** Running `go test` 50 times shouldn't require 50 approvals, but `rm -rf` should always ask.
+Claude Code hook that auto-approves safe commands and whitelists them. Everything else prompts as usual.
 
 ## Requirements
 
