@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Claude Code Hook: LLM-based Tool Safety Validator
+Claude Code Auto-Approve: LLM-based Tool Safety Validator
 
 Uses Claude Haiku (via Claude Code CLI) to assess whether a tool call is safe
 (read-only) or requires user confirmation (write/destructive operations).

@@ -1,4 +1,4 @@
-# Claude Code Safety Hook
+# Claude Code Auto-Approve
 
 Claude Code hook that auto-approves safe commands and whitelists them. Everything else prompts as usual.
 

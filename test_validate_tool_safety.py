@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Optimized tests for the Claude Code safety hook.
+Optimized tests for Claude Code Auto-Approve.
 
 Optimizations:
 1. Batches multiple commands into single LLM calls (reduces ~94 calls to ~4)
@@ -187,7 +187,7 @@ def get_code_results(tc: TestCase) -> tuple[bool | None, str | None]:
 def run_tests():
     """Run all tests with batched LLM calls."""
     print("=" * 70)
-    print("CLAUDE SAFETY HOOK TESTS (Optimized)")
+    print("CLAUDE CODE AUTO-APPROVE TESTS (Optimized)")
     print("=" * 70)
 
     # First pass: get code-based results and identify what needs LLM

@@ -1,12 +1,12 @@
 #!/bin/bash
-# Installation script for Claude Code Safety Hook
+# Installation script for Claude Code Auto-Approve
 
 set -e
 
 HOOKS_DIR="$HOME/.claude/hooks"
 SETTINGS_FILE="$HOME/.claude/settings.json"
 
-echo "Installing Claude Code Safety Hook..."
+echo "Installing Claude Code Auto-Approve..."
 
 # Create hooks directory
 mkdir -p "$HOOKS_DIR"
