@@ -93,19 +93,22 @@ SAFE_COMMAND_BASES = {
 
 SYSTEM_PROMPT = """Evaluate if this bash command is safe to run without user confirmation.
 
+Evaluate the EXACT command received. Is THIS specific command safe?
+
 SAFE if the command:
 - Only reads, displays, or queries information
-- Builds, compiles, or tests code (local operations)
+- Builds, compiles, or tests code
 - Checks versions or system info
+- Performs standard, non-destructive operations
 
 UNSAFE if the command:
-- Deletes or modifies files (rm, mv to overwrite, truncate)
-- Uses --force or -f flags (destructive override)
-- Accesses secrets (.env, .ssh, .aws, credentials, keys, tokens, passwd)
-- Makes network requests that could send data (curl, wget)
-- Runs arbitrary/untrusted code (docker run, eval, exec)
-- Changes permissions or ownership (chmod, chown, sudo)
-- Has irreversible effects (git reset --hard, git clean, drop)
+- Deletes or modifies files
+- Uses --force or -f flags
+- Accesses secrets or credentials
+- Could exfiltrate data to arbitrary destinations
+- Runs arbitrary/untrusted code
+- Changes system permissions
+- Has irreversible effects
 
 If SAFE, suggest a whitelist pattern using Claude Code's syntax:
 - "Bash(cmd:*)" - prefix match: "Bash(go build:*)" matches "go build", "go build ./...", "go build -v"
@@ -114,10 +117,12 @@ If SAFE, suggest a whitelist pattern using Claude Code's syntax:
 - "Bash(cmd * arg)" - middle wildcard: "Bash(git * main)" matches "git checkout main", "git merge main"
 - "Bash(cmd)" - exact match only (avoid this, prefer :* for flexibility)
 
-Pattern guidelines:
-- Use "Bash(tool subcommand:*)" for multi-word commands: "Bash(go test:*)", "Bash(npm run:*)", "Bash(git status:*)"
-- Use "Bash(tool:*)" for single commands: "Bash(ls:*)", "Bash(make:*)"
-- Use "none" ONLY if ANY variation could be dangerous (e.g., git push could become git push --force)
+Pattern guidelines - think: "What's the WORST command that could match this pattern?"
+- If ALL variations are safe → use broad pattern "Bash(cmd:*)"
+  Example: "go test:*" is safe because go test -v, go test ./... are all safe
+- If SOME variations are dangerous → use exact match "Bash(exact command)"
+  Example: "git push origin main" exact, because "git push:*" could match "git push --force"
+- If even exact match is risky → use "none"
 
 Respond with ONLY valid JSON:
 {"safe": true, "reason": "...", "pattern": "Bash(...)"}
