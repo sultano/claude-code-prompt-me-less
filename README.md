@@ -14,6 +14,17 @@ claude --version
 ## Install
 
 ```bash
+./install.sh
+```
+
+This will:
+- Copy the hook script to `~/.claude/hooks/`
+- Auto-merge hook config into your existing `~/.claude/settings.json` (creates backup first)
+- Create a new settings file if none exists
+
+### Manual Install
+
+```bash
 cp validate_tool_safety.py ~/.claude/hooks/
 ```
 
@@ -24,7 +35,7 @@ Add to `~/.claude/settings.json`:
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|Write|Edit|NotebookEdit",
         "hooks": [
           {
             "type": "command",
@@ -35,6 +46,14 @@ Add to `~/.claude/settings.json`:
     ]
   }
 }
+```
+
+## Uninstall
+
+```bash
+rm ~/.claude/hooks/validate_tool_safety.py
+# Restore backup if needed: cp ~/.claude/settings.json.backup ~/.claude/settings.json
+# Or manually remove the hook entry from ~/.claude/settings.json
 ```
 
 ## How It Works
