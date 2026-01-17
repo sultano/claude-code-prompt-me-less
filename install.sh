@@ -1,12 +1,12 @@
 #!/bin/bash
-# Installation script for Claude Code Auto-Approve
+# Installation script for Claude Code Prompt Me Less
 
 set -e
 
 HOOKS_DIR="$HOME/.claude/hooks"
 SETTINGS_FILE="$HOME/.claude/settings.json"
 
-echo "Installing Claude Code Auto-Approve..."
+echo "Installing Claude Code Prompt Me Less..."
 
 # Create hooks directory
 mkdir -p "$HOOKS_DIR"
