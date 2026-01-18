@@ -16,7 +16,7 @@ import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 
-from validate_tool_safety import (
+from hooks.validate_tool_safety import (
     CLAUDE_MODEL,
     SYSTEM_PROMPT,
     check_never_whitelist,
@@ -323,7 +323,7 @@ def test_pattern_matching():
     import tempfile
     import os
     from pathlib import Path
-    from validate_tool_safety import get_settings_path, PROJECT_SETTINGS_NAME
+    from hooks.validate_tool_safety import get_settings_path, PROJECT_SETTINGS_NAME
 
     print("=" * 70)
     print("PATTERN MATCHING TESTS")

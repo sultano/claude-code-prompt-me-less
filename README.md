@@ -1,6 +1,6 @@
 # Claude Code Prompt Me Less
 
-Constant permission prompts breaking your flow? This Claude Code hook auto-approves and whitelists safe commands (`ls`, `git status`, `npm test`...) while leaving others (`rm -rf`, `curl | bash`...) to the normal approval flow.
+Constant permission prompts breaking your flow? This Claude Code plugin auto-approves and whitelists safe commands (`ls`, `git status`, `npm test`...) while leaving others (`rm -rf`, `curl | bash`...) to the normal approval flow.
 
 ## Requirements
 
@@ -13,47 +13,18 @@ claude --version
 
 ## Install
 
-```bash
-./install.sh
+In a Claude Code session, run:
+
 ```
-
-This will:
-- Copy the hook script to `~/.claude/hooks/`
-- Auto-merge hook config into your existing `~/.claude/settings.json` (creates timestamped backup if modified)
-- Create a new settings file if none exists
-
-### Manual Install
-
-```bash
-cp validate_tool_safety.py ~/.claude/hooks/
-```
-
-Add to `~/.claude/settings.json`:
-
-```json
-{
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash|Write|Edit|NotebookEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/hooks/validate_tool_safety.py"
-          }
-        ]
-      }
-    ]
-  }
-}
+/plugin install sultano/claude-code-prompt-me-less
 ```
 
 ## Uninstall
 
-```bash
-rm ~/.claude/hooks/validate_tool_safety.py
-# Restore backup if needed: cp ~/.claude/settings.backup.TIMESTAMP.json ~/.claude/settings.json
-# Or manually remove the hook entry from ~/.claude/settings.json
+In a Claude Code session, run:
+
+```
+/plugin uninstall prompt-me-less
 ```
 
 ## How It Works

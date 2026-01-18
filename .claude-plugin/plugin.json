@@ -1,0 +1,9 @@
+{
+  "name": "prompt-me-less",
+  "version": "1.0.0",
+  "description": "Auto-approves safe commands, asks for dangerous ones",
+  "author": {
+    "name": "sultano"
+  },
+  "hooks": "./hooks/hooks.json"
+}
