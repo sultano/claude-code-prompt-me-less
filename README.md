@@ -1,6 +1,6 @@
 # Claude Code Prompt Me Less
 
-Constant permission prompts breaking your flow? This Claude Code plugin auto-approves and whitelists safe commands (`ls`, `git status`, `npm test`...) while leaving others (`rm -rf`, `curl | bash`...) to the normal approval flow.
+Constant permission prompts breaking your flow? This Claude Code plugin auto-approves safe commands (`ls`, `git status`, `npm test`...) while prompting for others (`rm -rf`, `curl | bash`...).
 
 ## Requirements
 

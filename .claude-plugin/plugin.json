@@ -1,7 +1,7 @@
 {
   "name": "prompt-me-less",
   "version": "1.0.0",
-  "description": "Auto-approves safe commands, asks for dangerous ones",
+  "description": "Auto-approves safe commands, prompts for others",
   "author": {
     "name": "sultano"
   },
